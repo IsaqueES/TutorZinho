@@ -1,7 +1,7 @@
 //! Importações
 const { DataTypes } = require("sequelize");
 const database = require("../configdb");
-const Courses = database.define({
+const Courses = database.define("Courses",{
   id: {
     primaryKey: true,
     type: DataTypes.INTEGER,
