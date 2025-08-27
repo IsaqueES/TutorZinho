@@ -4,7 +4,7 @@ const sequelize = new Sequelize( // Item da classe
   "postgresql://postgres.gjyakmgtkmmeqqgdxavo:6TSPKZ0qZcJEAQXI@aws-1-sa-east-1.pooler.supabase.com:6543/postgres",
   {
     dialect: "postgres",
-    logging: console.log,
+    logging: false,
   }
 );
 

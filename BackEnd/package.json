@@ -1,9 +1,9 @@
 {
-  "name": "backend",
+  "name": "backend-tutorzinho-isaq",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node Database/indexdb.js",
+    "start": "node --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "chalk": "^5.6.0",
+    "express": "^5.1.0",
     "pg": "^8.16.3",
     "sequelize": "^6.37.7"
   }
