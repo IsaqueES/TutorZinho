@@ -11,10 +11,6 @@ const Classes = database.define("Classes", {
     autoIncrement: true,
     allowNull: false,
   },
-  Class_Name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   Class_Subject: {
     type: DataTypes.INTEGER,
     references: {
@@ -29,6 +25,9 @@ const Classes = database.define("Classes", {
       key: "id",
     },
   },
+  Class_Image:{
+    type:DataTypes.STRING
+  }
 });
 
 module.exports = Classes;

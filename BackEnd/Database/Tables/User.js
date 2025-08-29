@@ -19,7 +19,7 @@ const User = database.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  User_type: {
+  User_Type: {
     type: DataTypes.ENUM("Professor", "Aluno"),
     allowNull: false,
   },

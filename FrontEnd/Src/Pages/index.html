@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Tutorzinho</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
     <style>
     blockquote {
         border-left: 4px solid #ccc;
@@ -40,12 +41,21 @@
         <button type="submit">Login</button>
     </form>
     <hr>
-    <form action="/addclasses" method="post">
+    <form action="/addcourse" method="post">
+        <h3>Formulario de criação de Curso</h3>
+        <input type="text" placeholder="Nome" name="name">
+        <button type="submit">Criar</button>
+    </form>
+    <form action="/addsubject" method="post">
+        <h3>Formulario de criação de Matéria</h3>
+        <input type="text" placeholder="Nome" name="name">
+        <button type="submit">Criar</button>
+    </form>
+    <form action="/addclass" method="post">
         <h3>Formulario de criação de Monitoria</h3>
-        <blockquote>
-        “Aqui tera o formulario de criação de monitoria do Tutorzinho”
-        <footer>— Isaque Estolano(Back-End do Tutorzinho)</footer>
-        </blockquote>
+        <input type="text" placeholder="Matéria" name="subject">
+        <input type="text" placeholder="Curso" name="course">
+        <input type="text" placeholder="Imagem URL" name="imgurl">
         <button type="submit">Criar</button>
     </form>
   </body>
