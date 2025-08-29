@@ -3,6 +3,7 @@ const express = require("express");
 const getRoutes = require("./Routes/GET/getr");
 const postRoutes = require("./Routes/POST/postr");
 const path = require('path');
+const cors = require('cors');
 //? Sincronização com o Database
 
 (async () => {
@@ -28,7 +29,7 @@ const path = require('path');
 const app = express();
 
 app.use("/assets", express.static(path.join(__dirname,"..", "FrontEnd", "Src", "Assets")));
-
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
