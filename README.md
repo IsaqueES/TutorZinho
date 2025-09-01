@@ -1,4 +1,5 @@
-![Top language](https://img.shields.io/github/languages/top/IsaqueES/TutorZinho?style=flat-square&color=blue)
+![Top Language](https://img.shields.io/github/languages/top/IsaqueES/TutorZinho?color=informational&style=for-the-badge)
+
 
 
 
