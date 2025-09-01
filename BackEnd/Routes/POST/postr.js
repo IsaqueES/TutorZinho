@@ -45,6 +45,7 @@ router.post("/addsubject", async (req, res) => {
   }
 });
 router.post("/addclass", async (req, res) => {
+  const SUBJECT_DATA = Subject.findPK
   try {
     const bodydata = req.body;
     const newclass = await Class.create({

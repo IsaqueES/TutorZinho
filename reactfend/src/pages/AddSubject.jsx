@@ -3,7 +3,7 @@ export default function AddSubject() {
     <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white font-serif p-6">
       <h1 className="text-5xl mb-6">Criar Matéria / Curso</h1>
       <form
-        action="/addsubject"
+        action="http://localhost:3000/addsubject"
         method="post"
         className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md flex flex-col"
       >

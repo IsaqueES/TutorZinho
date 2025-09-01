@@ -17,9 +17,9 @@ export default function AddCourse() {
 
         <button
           type="submit"
-          className="bg-white text-gray-900 py-3 rounded hover:bg-gray-200 transition"
+          className="w-full bg-white text-gray-900 py-3 rounded hover:bg-gray-200 transition"
         >
-          Criar
+          Criar Curso
         </button>
       </form>
     </div>
