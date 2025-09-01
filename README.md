@@ -1,4 +1,5 @@
-![Top language](https://img.shields.io/github/languages/top/IsaqueES/TutorZinho.svg)
+![Languages](https://img.shields.io/github/languages/count/IsaqueES/TutorZinho.svg)
+
 
 # Vista Home
 ![alt text](image-1.png)
