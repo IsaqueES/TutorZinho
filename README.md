@@ -1,4 +1,5 @@
-![Languages](https://img.shields.io/github/languages/count/IsaqueES/TutorZinho.svg)
+![Top language](https://img.shields.io/github/languages/top/IsaqueES/TutorZinho?style=flat-square&color=blue)
+
 
 
 # Vista Home
