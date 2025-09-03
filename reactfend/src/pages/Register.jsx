@@ -4,12 +4,14 @@ export default function AddUser() {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const type = form.type.value; // pega o radio selecionado
+    const type = form.type.value;
 
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
     localStorage.setItem("type", type);
+    //! FAZER ISSO AE PFVR ISAQUE ASKDKASASDAKSd
+    localStorage.setItem("id", id);
   };
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white font-serif p-6">

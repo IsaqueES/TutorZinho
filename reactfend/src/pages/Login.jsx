@@ -14,6 +14,7 @@ export default function AddUser() {
       localStorage.setItem("email", userdata.User_Email);
       localStorage.setItem("password", userdata.User_Password);
       localStorage.setItem("type", userdata.User_Type);
+      localStorage.setItem("id", userdata.id);
       window.location = "/";
     }
   };

@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../Database/Tables/User");
-const Course = require("../../Database/Tables/Courses");
+const Courses = require("../../Database/Tables/Courses");
 const Subjects = require("../../Database/Tables/Subjects");
 const Classes = require("../../Database/Tables/Classes");
 
 //?USER API ->
 router.get("/apiuser", async (req, res) => {
   try {
-    const AllUser = await User.findAll(); // precisa do await
+    const AllUser = await User.findAll();
     res.json(AllUser);
   } catch (error) {
     res
@@ -20,7 +20,7 @@ router.get("/apiuser", async (req, res) => {
 //?COURSERS API ->
 router.get("/apicourse", async (req, res) => {
   try {
-    const AllCourse = await Course.findAll(); // precisa do await
+    const AllCourse = await Courses.findAll();
     res.json(AllCourse);
   } catch (error) {
     res
@@ -32,7 +32,7 @@ router.get("/apicourse", async (req, res) => {
 //?SUBJECT API ->
 router.get("/apisubject", async (req, res) => {
   try {
-    const AllSubject = await Subjects.findAll(); // precisa do await
+    const AllSubject = await Subjects.findAll();
     res.json(AllSubject);
   } catch (error) {
     res
@@ -48,11 +48,11 @@ router.get("/apiclass", async (req, res) => {
       include: [
         {
           model: Subjects,
-          attributes: ["Subject_Name"], // só o nome da matéria
+          attributes: ["Subject_Name"],
         },
         {
           model: Courses,
-          attributes: ["Course_Name"], // só o nome do curso
+          attributes: ["Course_Name"],
         },
       ],
     });
