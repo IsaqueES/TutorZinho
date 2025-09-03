@@ -2,8 +2,8 @@
 const express = require("express");
 const getRoutes = require("./Routes/GET/getr");
 const postRoutes = require("./Routes/POST/postr");
-const path = require('path');
-const cors = require('cors');
+const path = require("path");
+const cors = require("cors");
 //? Sincronização com o Database
 
 (async () => {
@@ -21,15 +21,17 @@ const cors = require('cors');
   Subjects.hasMany(Classes, { foreignKey: "Class_Subject" });
   Classes.belongsTo(Subjects, { foreignKey: "Class_Subject" });
 
-  await database.sync({ force: false }); // force: true recria tabelas, cuidado!
+  await database.sync({ force: false });
   console.log("Banco sincronizado com sucesso ✅");
 })();
 
-
 const app = express();
 
-app.use("/assets", express.static(path.join(__dirname,"..", "FrontEnd", "Src", "Assets")));
-app.use(cors())
+app.use(
+  "/assets",
+  express.static(path.join(__dirname, "..", "FrontEnd", "Src", "Assets"))
+);
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

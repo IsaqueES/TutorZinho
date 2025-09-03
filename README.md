@@ -12,22 +12,25 @@
 ---
 
 ## Vista Home
-![Vista Home](image-1.png)
+
+![Vista Home](./imgs/image-1.png)
 
 ## Vista Criar Curso
-![Vista Criar Curso](image-2.png)
+
+![Vista Criar Curso](./imgs/image-2.png)
 
 ## Vista Criar Usuario
-![Vista Criar Usuario](image-3.png)
+
+![Vista Criar Usuario](./imgs/image-3.png)
 
 ## Vista Criar Materia
-![Vista Criar Materia](image-4.png)
+
+![Vista Criar Materia](./imgs/image-4.png)
 
 ## Vista Criar Monitoria
-![Vista Criar Monitoria](image-5.png)
+
+![Vista Criar Monitoria](./imgs/image-5.png)
 
 ## Vista API Test
-![Vista API Test](image-6.png)
 
-## Desenvolvimento {1}
-![Desenvolvimento](image.png)
+![Vista API Test](./imgs/image-6.png)

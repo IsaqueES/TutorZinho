@@ -1,27 +1,66 @@
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-gray-900 text-white font-serif p-6 flex flex-col items-center">
-      <h1 className="text-6xl mb-6">Tutorzinho</h1>
-      <hr className="border-gray-700 w-full mb-6" />
-      <p className="max-w-3xl text-center mb-10">
-        Olá, este é o Tutorzinho, um site feito por Isaque Estolano de Souza
-        para a criação/visualização do Back-End do projeto principal TutorTime
-        que é feito com colaboração de Luis Henrique Abrantes e Cauã Almeida
-        Moura
-      </p>
+import { useState, useEffect } from "react";
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl mb-10">
+export default function Home() {
+  const name = localStorage.getItem("name");
+  const type = localStorage.getItem("type");
+
+  const [classes, setClasses] = useState([]);
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/apiclass");
+        const classlist = await response.json();
+        setClasses(classlist);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchClasses();
+  }, []);
+
+  const LogOut = () => {
+    localStorage.setItem("name", "");
+    localStorage.setItem("email", "");
+    localStorage.setItem("password", "");
+    localStorage.setItem("type", "");
+    window.location.href = "/";
+  };
+
+  let html = "";
+  let monitorias = "";
+  if (!type) {
+    html = (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-w-5xl mb-10 self-center">
+        <a
+          href="/login"
+          className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
+        >
+          Sing In
+        </a>
+        <a
+          href="/register"
+          className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
+        >
+          Sing Up
+        </a>
+      </div>
+    );
+  } else if (type === "Professor") {
+    html = (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl mb-10 self-center">
+        <button
+          onClick={LogOut}
+          className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
+        >
+          LogOut
+        </button>
         <a
           href="/course"
           className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
         >
           Criar Curso
-        </a>
-        <a
-          href="/user"
-          className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
-        >
-          Criar Usuário
         </a>
         <a
           href="/subject"
@@ -42,6 +81,65 @@ export default function Home() {
           API TEST
         </a>
       </div>
+    );
+  } else if (type === "Aluno") {
+    html = (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl mb-10 self-center">
+        <button
+          onClick={LogOut}
+          className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
+        >
+          LogOut
+        </button>
+        <a
+          href="/testeapi"
+          className="bg-gray-800 hover:bg-gray-700 text-white py-6 px-4 rounded-lg shadow-lg text-center transition"
+        >
+          API TEST
+        </a>
+      </div>
+    );
+    monitorias =
+      type === "Aluno" ? (
+        <div className="mt-6">
+          {classes.length > 0 ? (
+            classes.map((c) => (
+              <div key={c.id} className="bg-gray-800 p-4 rounded mb-3">
+                <h2 className="text-xl font-semibold">{c.Class_Image}</h2>
+                <p>{c.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>Nenhuma monitoria disponível.</p>
+          )}
+        </div>
+      ) : null;
+  }
+
+  //! RETURN
+  return (
+    <div className="min-h-screen bg-gray-900 text-white font-serif p-6 flex flex-col">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-6xl">Tutorzinho</h1>
+        <div className="flex items-center space-x-3 bg-gray-800 px-4 py-2 rounded-lg shadow-md">
+          <span className="text-lg font-semibold">
+            {type} : {name}
+          </span>
+        </div>
+      </div>
+
+      <hr className="border-gray-700 w-full mb-6" />
+
+      <p className="max-w-3xl text-center mb-10 self-center">
+        Olá, este é o Tutorzinho, um site feito por Isaque Estolano de Souza
+        para a criação/visualização do Back-End do projeto principal TutorTime
+        que é feito com colaboração de Luis Henrique Abrantes e Cauã Almeida
+        Moura
+      </p>
+
+      {html}
+      {monitorias}
 
       <hr className="border-gray-700 w-full" />
     </div>
