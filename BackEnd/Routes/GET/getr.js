@@ -4,11 +4,21 @@ const User = require("../../Database/Tables/User");
 const Courses = require("../../Database/Tables/Courses");
 const Subjects = require("../../Database/Tables/Subjects");
 const Classes = require("../../Database/Tables/Classes");
+const chalk = require("chalk");
+const cl = console.log;
+const blue = chalk.blue;
+const red = chalk.red;
+const green = chalk.green;
+const yellow = chalk.yellow;
 
+const Mensagem = (texto, arquivo, linha) => {
+  cl(blue(texto), "|", red(arquivo + " " + linha));
+};
 //?USER API ->
 router.get("/apiuser", async (req, res) => {
   try {
     const AllUser = await User.findAll();
+    Mensagem("User Send", "getr.js", "21");
     res.json(AllUser);
   } catch (error) {
     res
@@ -66,7 +76,7 @@ router.get("/apiclass", async (req, res) => {
 });
 
 //?CLASSES API FILTERED->
-router.get("/apiclassfiltered", async (req, res) => {
+router.get("/apiclassfilter", async (req, res) => {
   try {
     const allClasses = await Classes.findAll({
       include: [
@@ -80,8 +90,19 @@ router.get("/apiclassfiltered", async (req, res) => {
         },
       ],
     });
-
-    res.json(allClasses);
+    const ListOfClasses = [];
+    allClasses.forEach((classi) => {
+      const existe = ListOfClasses.some(
+        (c) => c.Materia === classi.Subject.Subject_Name
+      );
+      if (existe) {
+        Mensagem("Already Exists", "getr.js", "98");
+      } else {
+        ListOfClasses.push({ Materia: classi.Subject.Subject_Name });
+      }
+    });
+    cl(yellow("---------------------------------------------------------"));
+    res.send(ListOfClasses);
   } catch (error) {
     res
       .status(500)
@@ -100,7 +121,8 @@ router.get("/checklogin", async (req, res) => {
       User_Email: email,
     },
   });
-
+  Mensagem("User Logged", "getr.js", "123");
+  cl(yellow("---------------------------------------------------------"));
   res.json(usuariologado);
 });
 
