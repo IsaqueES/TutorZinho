@@ -65,6 +65,30 @@ router.get("/apiclass", async (req, res) => {
   }
 });
 
+//?CLASSES API FILTERED->
+router.get("/apiclassfiltered", async (req, res) => {
+  try {
+    const allClasses = await Classes.findAll({
+      include: [
+        {
+          model: Subjects,
+          attributes: ["Subject_Name"],
+        },
+        {
+          model: Courses,
+          attributes: ["Course_Name"],
+        },
+      ],
+    });
+
+    res.json(allClasses);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Erro ao buscar Classes", details: error.message });
+  }
+});
+
 //?USER LOGIN ->
 router.get("/checklogin", async (req, res) => {
   const email = req.query.email;
