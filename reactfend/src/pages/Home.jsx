@@ -9,7 +9,7 @@ export default function Home() {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await fetch("http://localhost:3000/apiclass");//!FAZER FILTER!!!!!!!!
+        const response = await fetch("http://localhost:3000/apiclass"); //!FAZER FILTER!!!!!!!!
         const classlist = await response.json();
 
         console.log("Dados recebidos da API:", classlist);
@@ -174,7 +174,7 @@ export default function Home() {
                   </div>
 
                   <h3 className="text-xl font-bold text-white mb-2">
-                    Monitoria de {c.Subject?.Subject_Name}
+                    Monitoria de {c.Materia}
                   </h3>
 
                   <p className="text-gray-300 mb-4 flex items-center">
