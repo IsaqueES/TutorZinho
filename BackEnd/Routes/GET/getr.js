@@ -98,7 +98,10 @@ router.get("/apiclassfilter", async (req, res) => {
       if (existe) {
         Mensagem("Already Exists", "getr.js", "98");
       } else {
-        ListOfClasses.push({ Materia: classi.Subject.Subject_Name });
+        ListOfClasses.push({
+          Subject: classi.Subject.Subject_Name,
+          Course: classi.Course.Course_Name,
+        });
       }
     });
     cl(yellow("---------------------------------------------------------"));

@@ -60,36 +60,6 @@ export default function API() {
       {/* Main Content */}
       <main className="px-6 lg:px-12 pb-12">
         <div className="max-w-7xl mx-auto">
-          {/* Stats Overview */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {dataSections.map((section, index) => (
-              <div
-                key={`stat-${index}`}
-                className="bg-gray-800/40 backdrop-blur-lg border border-gray-700/50 rounded-2xl p-6 text-center"
-              >
-                <div
-                  className={`w-12 h-12 bg-gradient-to-br ${section.color} rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3`}
-                >
-                  {section.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-1">
-                  {section.title}
-                </h3>
-                <p className="text-2xl font-bold text-purple-400">
-                  {typeof section.content === "object" &&
-                  Array.isArray(section.content)
-                    ? section.content.length
-                    : typeof section.content === "object" &&
-                      section.content !== null
-                    ? Object.keys(section.content).length
-                    : section.content === "Carregando..."
-                    ? "..."
-                    : "N/A"}
-                </p>
-              </div>
-            ))}
-          </div>
-
           {/* Data Sections */}
           <div className="grid lg:grid-cols-2 gap-8">
             {dataSections.map((section, index) => (
@@ -109,19 +79,6 @@ export default function API() {
                       <h2 className="text-2xl font-bold text-white">
                         {section.title}
                       </h2>
-                      <p className="text-gray-300 text-sm">
-                        {section.content === "Carregando..."
-                          ? "Carregando dados..."
-                          : `${
-                              typeof section.content === "object" &&
-                              Array.isArray(section.content)
-                                ? section.content.length
-                                : typeof section.content === "object" &&
-                                  section.content !== null
-                                ? Object.keys(section.content).length
-                                : "0"
-                            } registros encontrados`}
-                      </p>
                     </div>
                   </div>
                 </div>
