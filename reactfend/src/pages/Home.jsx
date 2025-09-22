@@ -6,10 +6,15 @@ export default function Home() {
 
   const [classes, setClasses] = useState([]);
 
+  //?BOTÃO INCLASS
+  const inClass = (materia) => {
+    window.location = `class/${materia}`;
+  };
+
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await fetch("http://localhost:3000/apiclassfilter"); //!FAZER FILTER!!!!!!!!
+        const response = await fetch("http://localhost:3000/apiclassfilter");
         const classlist = await response.json();
 
         console.log("Dados recebidos da API:", classlist);
@@ -174,7 +179,7 @@ export default function Home() {
                   </div>
 
                   <h3 className="text-xl font-bold text-white mb-2">
-                    Monitoria de {c.Subject}
+                    {c.Subject}
                   </h3>
 
                   <p className="text-gray-300 mb-4 flex items-center">
@@ -183,10 +188,10 @@ export default function Home() {
                   </p>
 
                   <button
-                    onClick={Subscribe}
+                    onClick={() => inClass(c.Subject)}
                     className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
                   >
-                    Inscrever-se
+                    Ver Monitorias Disponiveis
                   </button>
                 </div>
               </div>

@@ -5,6 +5,7 @@ const Courses = require("../../Database/Tables/Courses");
 const Subjects = require("../../Database/Tables/Subjects");
 const Classes = require("../../Database/Tables/Classes");
 const chalk = require("chalk");
+const { where } = require("sequelize");
 const cl = console.log;
 const blue = chalk.blue;
 const red = chalk.red;
@@ -113,6 +114,16 @@ router.get("/apiclassfilter", async (req, res) => {
   }
 });
 
+//? CLASSES API ONE SUBJECT ->
+router.get("/apiclassone", async (req, res) => {
+  const classes = await Classes.findAll({
+    include: {
+      model: Subjects,
+      where: { Class_Subject: "AAAAAAAAAAA" },
+    },
+  });
+  res.json(classes);
+});
 //?USER LOGIN ->
 router.get("/checklogin", async (req, res) => {
   const email = req.query.email;

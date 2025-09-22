@@ -7,6 +7,7 @@ import LUser from "./pages/Login.jsx";
 import Subject from "./pages/AddSubject.jsx";
 import Class from "./pages/AddClass.jsx";
 import API from "./pages/API.jsx";
+import Monitoring from "./pages/InClass.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/class" element={<Class />} />
       <Route path="/testeapi" element={<API />} />
       <Route path="/register" element={<RUser />} />
+      <Route path="/class/:materia" element={<Monitoring />} />
     </Routes>
   );
 }

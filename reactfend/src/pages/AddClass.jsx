@@ -54,7 +54,7 @@ export default function AddClass() {
               <div className="space-y-3">
                 <label
                   htmlFor="curso"
-                  className="block text-lg font-semibold text-white flex items-center"
+                  className="text-lg font-semibold text-white flex items-center"
                 >
                   <span className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center text-sm mr-3">
                     📚

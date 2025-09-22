@@ -4,6 +4,6 @@ export async function fetchAPI(url, setState) {
     const data = await resposta.json();
     setState(JSON.stringify(data, null, 2)); // JSON bonitinho
   } catch (error) {
-    setState("DEU ERRO > " + error);
+    setState("DEU ERRO => " + error);
   }
 }
