@@ -19,7 +19,7 @@ function App() {
       <Route path="/class" element={<Class />} />
       <Route path="/testeapi" element={<API />} />
       <Route path="/register" element={<RUser />} />
-      <Route path="/class/:materia" element={<Monitoring />} />
+      <Route path="/class/:course/:id" element={<Monitoring />} />
     </Routes>
   );
 }

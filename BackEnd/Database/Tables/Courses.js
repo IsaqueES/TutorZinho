@@ -9,7 +9,7 @@ const Courses = database.define("Courses", {
     allowNull: false,
   },
   Course_Name: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
 });

@@ -8,15 +8,15 @@ const User = database.define("User", {
     allowNull: false,
   },
   User_Name: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   User_Email: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   User_Password: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   User_Type: {

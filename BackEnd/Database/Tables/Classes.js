@@ -16,7 +16,7 @@ const Classes = database.define("Classes", {
     type: DataTypes.INTEGER,
   },
   Class_Image: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
 });
 

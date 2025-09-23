@@ -8,7 +8,7 @@ const Subjects = database.define("Subjects", {
     allowNull: false,
   },
   Subject_Name: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
 });

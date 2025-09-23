@@ -15,6 +15,7 @@ const yellow = chalk.yellow;
 const Mensagem = (texto, arquivo, linha) => {
   cl(blue(texto), "|", red(arquivo + " " + linha));
 };
+
 //?USER API ->
 router.get("/apiuser", async (req, res) => {
   try {
@@ -94,7 +95,7 @@ router.get("/apiclassfilter", async (req, res) => {
     const ListOfClasses = [];
     allClasses.forEach((classi) => {
       const existe = ListOfClasses.some(
-        (c) => c.Materia === classi.Subject.Subject_Name
+        (c) => c.Subject === classi.Subject.Subject_Name
       );
       if (existe) {
         Mensagem("Already Exists", "getr.js", "98");
@@ -102,6 +103,8 @@ router.get("/apiclassfilter", async (req, res) => {
         ListOfClasses.push({
           Subject: classi.Subject.Subject_Name,
           Course: classi.Course.Course_Name,
+          Subject_ID: classi.Class_Subject,
+          Course_ID: classi.Class_Course,
         });
       }
     });
@@ -114,16 +117,19 @@ router.get("/apiclassfilter", async (req, res) => {
   }
 });
 
-//? CLASSES API ONE SUBJECT ->
-router.get("/apiclassone", async (req, res) => {
+//? CLASSES API INCLASS ->
+router.get("/apiinclass/:course/:id", async (req, res) => {
   const classes = await Classes.findAll({
-    include: {
-      model: Subjects,
-      where: { Class_Subject: "AAAAAAAAAAA" },
+    where: {
+      Class_Subject: parseInt(req.params.id),
+      Class_Course: parseInt(req.params.course),
     },
   });
+
+  Mensagem("Class Visited", "getr.js", "123");
   res.json(classes);
 });
+
 //?USER LOGIN ->
 router.get("/checklogin", async (req, res) => {
   const email = req.query.email;
