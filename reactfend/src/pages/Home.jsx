@@ -6,15 +6,11 @@ export default function Home() {
 
   const [classes, setClasses] = useState([]);
 
-  //?INCLASS BUTTON
+  //?BOTÃO INCLASS
   const inClass = (curso, id) => {
     window.location = `/class/${curso}/${id}`;
   };
 
-  //?CLICK IN CLASS WITHOUT LOGIN
-  const NotLogged = () => {
-    window.location = `/register`;
-  };
   useEffect(() => {
     const fetchClasses = async () => {
       try {
@@ -38,7 +34,6 @@ export default function Home() {
     localStorage.setItem("email", "");
     localStorage.setItem("password", "");
     localStorage.setItem("type", "");
-    localStorage.setItem("id", "");
     window.location.href = "/";
   };
 
@@ -57,7 +52,7 @@ export default function Home() {
           <div className="relative z-10 text-center">
             <div className="text-4xl mb-3">🔐</div>
             <h3 className="text-2xl font-bold mb-2">Entrar</h3>
-            <p className="text-purple-200">AceAsse sua conta</p>
+            <p className="text-purple-200">Acesse sua conta</p>
           </div>
         </a>
         <a
@@ -108,7 +103,7 @@ export default function Home() {
                   </p>
 
                   <button
-                    onClick={() => NotLogged()}
+                    onClick={() => inClass(c.Course_ID, c.Subject_ID)}
                     className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
                   >
                     Ver Monitorias Disponiveis

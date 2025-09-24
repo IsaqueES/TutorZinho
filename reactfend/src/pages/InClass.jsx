@@ -6,6 +6,13 @@ export default function InClass() {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const type = localStorage.getItem("type");
+  //?CLICK IN CLASS WITHOUT LOGIN
+  const Subscribe = () => {
+    if (!type) {
+      window.location = `/register`;
+    }
+  };
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -144,7 +151,10 @@ export default function InClass() {
                       )}
 
                       {/* Botão de Ação */}
-                      <button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+                      <button
+                        onClick={() => Subscribe()}
+                        className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+                      >
                         Inscrever-se
                       </button>
                     </div>
