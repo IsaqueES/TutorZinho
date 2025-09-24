@@ -5,6 +5,7 @@ const User = require("../../Database/Tables/User");
 const Class = require("../../Database/Tables/Classes");
 const Course = require("../../Database/Tables/Courses");
 const Subject = require("../../Database/Tables/Subjects");
+const Subscribes = require("../../Database/Tables/Subscribes");
 
 router.post("/adduser", async (req, res) => {
   try {
@@ -45,7 +46,7 @@ router.post("/addsubject", async (req, res) => {
   }
 });
 router.post("/addclass", async (req, res) => {
-  const SUBJECT_DATA = Subject.findPK
+  const SUBJECT_DATA = Subject.findPK;
   try {
     const bodydata = req.body;
     const newclass = await Class.create({
@@ -57,6 +58,26 @@ router.post("/addclass", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+});
+
+//?SUBSCRIBE
+router.post("/subscribe", async (req, res) => {
+  try {
+    const { idu, idc, wl } = req.body;
+    const bodydata = req.body;
+    console.log(req.params);
+    const NewSub = await Subscribes.create({
+      User_Id: idu,
+      Class_Id: idc,
+    });
+    res.redirect(wl);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+router.post("/test", async (req, res) => {
+  res.send("asdasd");
 });
 
 module.exports = router;
