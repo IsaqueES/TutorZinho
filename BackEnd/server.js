@@ -16,6 +16,11 @@ const cors = require("cors");
   const Subscribes = require("./Database/Tables/Subscribes");
 
   //? Relacionamento de Tabelas
+  Classes.hasMany(Subscribes, { foreignKey: "Class_Id" });
+  Subscribes.belongsTo(Classes, { foreignKey: "Class_Id" });
+
+  User.hasMany(Subscribes, { foreignKey: "User_Id" });
+  Subscribes.belongsTo(User, { foreignKey: "User_Id" });
 
   Courses.hasMany(Classes, { foreignKey: "Class_Course" });
   Classes.belongsTo(Courses, { foreignKey: "Class_Course" });

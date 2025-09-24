@@ -6,11 +6,15 @@ export default function Home() {
 
   const [classes, setClasses] = useState([]);
 
-  //?BOTÃO INCLASS
+  //?INCLASS BUTTON
   const inClass = (curso, id) => {
     window.location = `/class/${curso}/${id}`;
   };
 
+  //?CLICK IN CLASS WITHOUT LOGIN
+  const NotLogged = () => {
+    window.location = `/register`;
+  };
   useEffect(() => {
     const fetchClasses = async () => {
       try {
@@ -34,6 +38,7 @@ export default function Home() {
     localStorage.setItem("email", "");
     localStorage.setItem("password", "");
     localStorage.setItem("type", "");
+    localStorage.setItem("id", "");
     window.location.href = "/";
   };
 
@@ -52,7 +57,7 @@ export default function Home() {
           <div className="relative z-10 text-center">
             <div className="text-4xl mb-3">🔐</div>
             <h3 className="text-2xl font-bold mb-2">Entrar</h3>
-            <p className="text-purple-200">Acesse sua conta</p>
+            <p className="text-purple-200">AceAsse sua conta</p>
           </div>
         </a>
         <a
@@ -66,6 +71,63 @@ export default function Home() {
             <p className="text-gray-300">Crie sua conta</p>
           </div>
         </a>
+      </div>
+    );
+    monitorias = (
+      <div className="w-full">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent mb-2">
+            Monitorias Disponíveis
+          </h2>
+          <div className="h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent w-32 mx-auto"></div>
+        </div>
+
+        {classes.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {classes.map((c) => (
+              <div
+                key={c.id}
+                className="group relative overflow-hidden bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-lg border border-gray-700/50 hover:border-purple-500/50 rounded-3xl p-6 shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-purple-500/20"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-2xl">
+                      📚
+                    </div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {c.Subject}
+                  </h3>
+
+                  <p className="text-gray-300 mb-4 flex items-center">
+                    <span className="inline-block w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                    Curso: {c.Course}
+                  </p>
+
+                  <button
+                    onClick={() => NotLogged()}
+                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+                  >
+                    Ver Monitorias Disponiveis
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">📚</div>
+            <h3 className="text-2xl font-bold text-gray-400 mb-2">
+              Nenhuma monitoria disponível
+            </h3>
+            <p className="text-gray-500">
+              Novas monitorias serão exibidas aqui quando estiverem disponíveis.
+            </p>
+          </div>
+        )}
       </div>
     );
     //? PROFESSOR
@@ -122,6 +184,63 @@ export default function Home() {
             <h3 className="text-xl font-bold">API Test</h3>
           </div>
         </a>
+      </div>
+    );
+    monitorias = (
+      <div className="w-full">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent mb-2">
+            Monitorias Disponíveis
+          </h2>
+          <div className="h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent w-32 mx-auto"></div>
+        </div>
+
+        {classes.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {classes.map((c) => (
+              <div
+                key={c.id}
+                className="group relative overflow-hidden bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-lg border border-gray-700/50 hover:border-purple-500/50 rounded-3xl p-6 shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-purple-500/20"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-2xl">
+                      📚
+                    </div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {c.Subject}
+                  </h3>
+
+                  <p className="text-gray-300 mb-4 flex items-center">
+                    <span className="inline-block w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                    Curso: {c.Course}
+                  </p>
+
+                  <button
+                    onClick={() => inClass(c.Course_ID, c.Subject_ID)}
+                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+                  >
+                    Ver Monitorias Disponiveis
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">📚</div>
+            <h3 className="text-2xl font-bold text-gray-400 mb-2">
+              Nenhuma monitoria disponível
+            </h3>
+            <p className="text-gray-500">
+              Novas monitorias serão exibidas aqui quando estiverem disponíveis.
+            </p>
+          </div>
+        )}
       </div>
     );
     //? ALUNO
