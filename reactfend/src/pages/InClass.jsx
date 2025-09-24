@@ -1,5 +1,4 @@
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import {
   ArrowLeft,
@@ -13,27 +12,19 @@ import {
 
 export default function InClass() {
   const { course, id } = useParams();
+  const idc = id;
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const type = localStorage.getItem("type");
-
-  const Subscribe = async (idc) => {
+  const idu = localStorage.getItem("id");
+  console.log(idu);
+  const Subscribe = async () => {
     console.log("!");
     if (!type) {
       window.location = `/register`;
     } else if (type == "Professor" || type == "Aluno") {
-      const idu = localStorage.getItem("id");
-      const wl = window.location.href;
-      const subscriptionData = {
-        idu: idu,
-        idc: idc,
-        wl: wl,
-      };
-      const NewSub = await axios.post(
-        `http://localhost:3000/subscribe`,
-        subscriptionData
-      );
+      const NewSub = await fetch(`http://localhost:3000/subscribe`);
       console.log("passsed");
     }
   };
@@ -95,25 +86,31 @@ export default function InClass() {
                   key={classItem.id}
                   className="bg-gray-800 rounded-lg p-6 flex flex-col justify-between"
                 >
-                  <div>
-                    {classItem.Class_Image && (
-                      <img
-                        src={classItem.Class_Image}
-                        alt="Monitoria"
-                        className="w-full h-32 object-cover rounded-md mb-4"
-                      />
-                    )}
-                    <h3 className="text-xl font-bold mb-2">
-                      Monitoria #{classItem.id}
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => Subscribe(classItem.id)}
-                    className="mt-4 w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md transition-colors"
+                  <form
+                    action={`http://localhost:3000/subscribe/${idc}/${idu}/home`}
+                    method="post"
+                    className="bg-gray-800 rounded-lg shadow-lg p-8 space-y-6"
                   >
-                    <UserPlus className="w-4 h-4" />
-                    Inscrever-se
-                  </button>
+                    <div>
+                      {classItem.Class_Image && (
+                        <img
+                          src={classItem.Class_Image}
+                          alt="Monitoria"
+                          className="w-full h-32 object-cover rounded-md mb-4"
+                        />
+                      )}
+                      <h3 className="text-xl font-bold mb-2">
+                        Monitoria #{classItem.id}
+                      </h3>
+                    </div>
+                    <button
+                      type="submit"
+                      className="mt-4 w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md transition-colors"
+                    >
+                      <UserPlus className="w-4 h-4" />
+                      Inscrever-se
+                    </button>
+                  </form>
                 </div>
               ))}
             </div>

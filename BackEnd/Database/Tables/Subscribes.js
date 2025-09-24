@@ -1,8 +1,12 @@
 const { DataTypes } = require("sequelize");
 const database = require("../configdb");
 const Subscribes = database.define("Subscribes", {
-  Class_Id: DataTypes.INTEGER,
-  User_Id: DataTypes.INTEGER,
+  id: {
+    primaryKey: true,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+  },
 });
 
 module.exports = Subscribes;

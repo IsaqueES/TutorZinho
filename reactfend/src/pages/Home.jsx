@@ -39,7 +39,7 @@ export default function Home() {
     window.location = `/class/${curso}/${id}`;
   };
 
-  const LogOut = () => {
+  const LogOff = () => {
     localStorage.clear();
     window.location.href = "/";
   };
@@ -96,7 +96,7 @@ export default function Home() {
         <span>API Test</span>
       </a>
       <button
-        onClick={LogOut}
+        onClick={LogOff}
         className="col-span-2 md:col-span-1 flex flex-col items-center justify-center gap-2 bg-red-800/50 hover:bg-red-700/50 p-4 rounded-lg transition-colors"
       >
         <LogOut className="w-8 h-8 text-red-400" />

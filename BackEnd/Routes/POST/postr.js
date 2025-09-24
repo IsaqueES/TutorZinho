@@ -7,6 +7,19 @@ const Course = require("../../Database/Tables/Courses");
 const Subject = require("../../Database/Tables/Subjects");
 const Subscribes = require("../../Database/Tables/Subscribes");
 
+//?SUBSCRIBE
+router.post("/subscribe/:idc/:idu/:web", async (req, res) => {
+  try {
+    const NewSub = await Subscribes.create({
+      Class_Id: 1,
+      User_Id: 1,
+    });
+    res.redirect("http://localhost:5173");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 router.post("/adduser", async (req, res) => {
   try {
     //* Boa pratica(Basicamente necessaria aksdsadkasdsd)
@@ -58,26 +71,6 @@ router.post("/addclass", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
-});
-
-//?SUBSCRIBE
-router.post("/subscribe", async (req, res) => {
-  try {
-    const { idu, idc, wl } = req.body;
-    const bodydata = req.body;
-    console.log(req.params);
-    const NewSub = await Subscribes.create({
-      User_Id: idu,
-      Class_Id: idc,
-    });
-    res.redirect(wl);
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-router.post("/test", async (req, res) => {
-  res.send("asdasd");
 });
 
 module.exports = router;

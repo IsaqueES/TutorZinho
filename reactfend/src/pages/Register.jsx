@@ -2,18 +2,20 @@ import { ArrowLeft, User, Mail, Lock, UserCheck } from "lucide-react";
 
 export default function AddUser() {
   // SUA LÓGICA ORIGINAL MANTIDA EXATAMENTE COMO NO CÓDIGO FONTE
-  const Login = (event) => {
+  const Login = async (event) => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const type = form.type.value;
+    const response = await fetch("http://localhost:3000/apiuser");
+    const data = await response.json();
+    const id = data.length + 1;
 
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
     localStorage.setItem("type", type);
-    //! FAZER ISSO AE PFVR ISAQUE ASKDKASASDAKSd
     localStorage.setItem("id", id);
   };
 
