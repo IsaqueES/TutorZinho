@@ -16,9 +16,9 @@ export default function Home() {
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
   const [classes, setClasses] = useState([]);
+  const idu = localStorage.getItem("id");
 
   useEffect(() => {
-    // Carrega os dados do usuário do localStorage quando o componente monta
     setName(localStorage.getItem("name"));
     setType(localStorage.getItem("type"));
 
@@ -146,7 +146,9 @@ export default function Home() {
           <div className="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-lg">
             <User className="w-5 h-5 text-purple-400" />
             <span>
-              {name} <span className="text-gray-400">({type})</span>
+              <a href={`/inuser/${idu}`}>
+                {name} <span className="text-gray-400">({type})</span>
+              </a>
             </span>
           </div>
         )}
@@ -157,9 +159,6 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-2">
             Plataforma de Monitorias
           </h2>
-          <p className="text-gray-400">
-            Criada por Isaque Estolano para o projeto TutorTime.
-          </p>
         </div>
 
         <div className="w-full max-w-5xl mb-12">

@@ -8,6 +8,7 @@ import Subject from "./pages/AddSubject.jsx";
 import Class from "./pages/AddClass.jsx";
 import API from "./pages/API.jsx";
 import Monitoring from "./pages/InClass.jsx";
+import InUser from "./pages/InUser.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/testeapi" element={<API />} />
       <Route path="/register" element={<RUser />} />
       <Route path="/class/:course/:id" element={<Monitoring />} />
+      <Route path="/user/:idu" element={<InUser />} />
     </Routes>
   );
 }

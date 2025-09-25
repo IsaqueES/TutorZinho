@@ -6,6 +6,7 @@ const Subjects = require("../../Database/Tables/Subjects");
 const Classes = require("../../Database/Tables/Classes");
 const chalk = require("chalk");
 const { where } = require("sequelize");
+const Subscribes = require("../../Database/Tables/Subscribes");
 const cl = console.log;
 const blue = chalk.blue;
 const red = chalk.red;
@@ -21,6 +22,22 @@ router.get("/apiuser", async (req, res) => {
   try {
     const AllUser = await User.findAll();
     Mensagem("User Send", "getr.js", "21");
+    res.json(AllUser);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Erro ao buscar usuários", details: error.message });
+  }
+});
+
+//?IN USER API ->
+router.get("/apiinuser/:idu", async (req, res) => {
+  try {
+    const AllUser = await Subscribes.findAll({
+      where: {
+        User_Id: parseInt(req.params.idu),
+      },
+    });
     res.json(AllUser);
   } catch (error) {
     res

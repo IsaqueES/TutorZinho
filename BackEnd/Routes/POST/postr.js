@@ -8,13 +8,15 @@ const Subject = require("../../Database/Tables/Subjects");
 const Subscribes = require("../../Database/Tables/Subscribes");
 
 //?SUBSCRIBE
-router.post("/subscribe/:idc/:idu/:web", async (req, res) => {
+router.post("/subscribe/:idc/:idu", async (req, res) => {
   try {
+    console.log(req.params);
+    console.log(parseInt(req.params.idc));
     const NewSub = await Subscribes.create({
-      Class_Id: 1,
-      User_Id: 1,
+      Class_Id: parseInt(req.params.idc),
+      User_Id: parseInt(req.params.idu),
     });
-    res.redirect("http://localhost:5173");
+    res.redirect("http://localhost:5173/");
   } catch (error) {
     console.error(error);
   }

@@ -19,16 +19,6 @@ export default function InClass() {
   const type = localStorage.getItem("type");
   const idu = localStorage.getItem("id");
   console.log(idu);
-  const Subscribe = async () => {
-    console.log("!");
-    if (!type) {
-      window.location = `/register`;
-    } else if (type == "Professor" || type == "Aluno") {
-      const NewSub = await fetch(`http://localhost:3000/subscribe`);
-      console.log("passsed");
-    }
-  };
-
   useEffect(() => {
     const fetchClasses = async () => {
       try {
@@ -87,9 +77,8 @@ export default function InClass() {
                   className="bg-gray-800 rounded-lg p-6 flex flex-col justify-between"
                 >
                   <form
-                    action={`http://localhost:3000/subscribe/${idc}/${idu}/home`}
+                    action={`http://localhost:3000/subscribe/${classItem.id}/${idu}`}
                     method="post"
-                    className="bg-gray-800 rounded-lg shadow-lg p-8 space-y-6"
                   >
                     <div>
                       {classItem.Class_Image && (
