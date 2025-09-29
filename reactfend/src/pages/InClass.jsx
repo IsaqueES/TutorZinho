@@ -12,11 +12,9 @@ import {
 
 export default function InClass() {
   const { course, id } = useParams();
-  const idc = id;
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const type = localStorage.getItem("type");
   const idu = localStorage.getItem("id");
   console.log(idu);
   useEffect(() => {

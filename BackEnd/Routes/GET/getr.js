@@ -37,6 +37,11 @@ router.get("/apiinuser/:idu", async (req, res) => {
       where: {
         User_Id: parseInt(req.params.idu),
       },
+      include: 
+        {
+          model: Classes,
+          attributes: ["Class_Subject"],
+        },
     });
     res.json(AllUser);
   } catch (error) {

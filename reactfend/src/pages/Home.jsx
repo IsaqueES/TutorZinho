@@ -146,7 +146,7 @@ export default function Home() {
           <div className="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-lg">
             <User className="w-5 h-5 text-purple-400" />
             <span>
-              <a href={`/inuser/${idu}`}>
+              <a href={`/user/${idu}`}>
                 {name} <span className="text-gray-400">({type})</span>
               </a>
             </span>

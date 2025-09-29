@@ -7,32 +7,27 @@ export default function InUser() {
   console.log("TSTE");
   useEffect(() => {
     fetchAPI(`http://localhost:3000/apiinuser/${idu}`, setUser);
-  }, []);//!CONTINUARR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  }, [idu]);
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-2">Lista de Classes do Usuário</h2>
       <ul className="space-y-2">
-        {user.map((item) => (
+        {user.map((ui) => (
           <li
-            key={item.id}
+            key={ui.id}
             className="border p-3 rounded-md shadow-sm flex flex-col"
           >
             <span>
-              <strong>ID:</strong> {item.id}
+              <strong>ID:</strong> {ui.id}
             </span>
             <span>
-              <strong>Class_Id:</strong> {item.Class_Id}
+              <strong>Class_Id:</strong> {ui.Class_Id}
             </span>
             <span>
-              <strong>User_Id:</strong> {item.User_Id}
+              <strong>Data de Inscrição:</strong> {ui.createdAt}
             </span>
             <span>
-              <strong>Criado em:</strong>{" "}
-              {new Date(item.createdAt).toLocaleString()}
-            </span>
-            <span>
-              <strong>Atualizado em:</strong>{" "}
-              {new Date(item.updatedAt).toLocaleString()}
+              <strong>Matéria:</strong> {ui.Class_Subject}
             </span>
           </li>
         ))}
