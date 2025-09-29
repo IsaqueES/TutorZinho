@@ -33,21 +33,26 @@ router.get("/apiuser", async (req, res) => {
 //?IN USER API ->
 router.get("/apiinuser/:idu", async (req, res) => {
   try {
-    const AllUser = await Subscribes.findAll({
+    const userSubscriptions = await Subscribes.findAll({
       where: {
         User_Id: parseInt(req.params.idu),
       },
-      include: 
+      include: [
         {
           model: Classes,
-          attributes: ["Class_Subject"],
+          include: 
+            {
+              model: Subjects,
+              attributes: ["Subject_Name"], 
+            },
         },
+      ],
     });
-    res.json(AllUser);
+    res.json(userSubscriptions);
   } catch (error) {
     res
       .status(500)
-      .json({ error: "Erro ao buscar usuários", details: error.message });
+      .json({ error: "Erro ao buscar inscrições do usuário", details: error.message });
   }
 });
 

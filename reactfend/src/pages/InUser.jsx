@@ -27,7 +27,7 @@ export default function InUser() {
               <strong>Data de Inscrição:</strong> {ui.createdAt}
             </span>
             <span>
-              <strong>Matéria:</strong> {ui.Class_Subject}
+              <strong>Matéria:</strong> {ui.Class.Subject.Subject_Name}
             </span>
           </li>
         ))}
