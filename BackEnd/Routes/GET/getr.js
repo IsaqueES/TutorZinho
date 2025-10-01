@@ -13,7 +13,7 @@ const red = chalk.red;
 const green = chalk.green;
 const yellow = chalk.yellow;
 
-const Mensagem = (texto, arquivo, linha) => {
+const Message = (texto, arquivo, linha) => {
   cl(blue(texto), "|", red(arquivo + " " + linha));
 };
 
@@ -21,7 +21,7 @@ const Mensagem = (texto, arquivo, linha) => {
 router.get("/apiuser", async (req, res) => {
   try {
     const AllUser = await User.findAll();
-    Mensagem("User Send", "getr.js", "21");
+    Message("User Send", "getr.js", "21");
     res.json(AllUser);
   } catch (error) {
     res
@@ -40,19 +40,25 @@ router.get("/apiinuser/:idu", async (req, res) => {
       include: [
         {
           model: Classes,
-          include: 
+          include: [
             {
               model: Subjects,
-              attributes: ["Subject_Name"], 
+              attributes: ["Subject_Name"],
             },
+            {
+              model: Courses,
+              attributes: ["Course_Name"],
+            },
+          ],
         },
       ],
     });
     res.json(userSubscriptions);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Erro ao buscar inscrições do usuário", details: error.message });
+    res.status(500).json({
+      error: "Erro ao buscar inscrições do usuário",
+      details: error.message,
+    });
   }
 });
 
@@ -125,7 +131,7 @@ router.get("/apiclassfilter", async (req, res) => {
         (c) => c.Subject === classi.Subject.Subject_Name
       );
       if (existe) {
-        Mensagem("Already Exists", "getr.js", "98");
+        Message("Already Exists", "getr.js", "98");
       } else {
         ListOfClasses.push({
           Subject: classi.Subject.Subject_Name,
@@ -153,7 +159,7 @@ router.get("/apiinclass/:course/:id", async (req, res) => {
     },
   });
 
-  Mensagem("Class Visited", "getr.js", "123");
+  Message("Class Visited", "getr.js", "123");
   res.json(classes);
 });
 
@@ -168,7 +174,7 @@ router.get("/checklogin", async (req, res) => {
       User_Email: email,
     },
   });
-  Mensagem("User Logged", "getr.js", "123");
+  Message("User Logged", "getr.js", "123");
   cl(yellow("---------------------------------------------------------"));
   res.json(usuariologado);
 });

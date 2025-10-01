@@ -72,21 +72,21 @@ export default function Home() {
         className="flex flex-col items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-colors text-center"
       >
         <GraduationCap className="w-8 h-8 text-purple-400" />
-        <span>Criar Curso</span>
+        <span>Cursos</span>
       </a>
       <a
         href="/subject"
         className="flex flex-col items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-colors text-center"
       >
         <Book className="w-8 h-8 text-purple-400" />
-        <span>Criar Matéria</span>
+        <span>Matérias</span>
       </a>
       <a
         href="/class"
         className="flex flex-col items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-colors text-center"
       >
         <Library className="w-8 h-8 text-purple-400" />
-        <span>Criar Monitoria</span>
+        <span>Monitorias</span>
       </a>
       <a
         href="/testeapi"
